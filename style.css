@@ -1,0 +1,167 @@
+/* Reset básico para manter tudo alinhado */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #f4f7f6;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Estilo do Cabeçalho - Azul Royal */
+header {
+    background-color: #0b3b85; /* Azul Royal escuro */
+    color: white;
+    padding: 1rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid #cc0000; /* Detalhe em Vermelho do emblema */
+}
+
+header .logo {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+header nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+header nav ul li a:hover {
+    color: #ffcccc; /* Tom claro de vermelho para o hover */
+}
+
+/* Estilo da Seção Principal (Hero) */
+.hero {
+    background-color: #1452b3; /* Azul Royal mais vivo */
+    color: white;
+    text-align: center;
+    padding: 100px 20px;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Botões com o Vermelho do emblema */
+.btn {
+    display: inline-block;
+    background-color: #cc0000; /* Vermelho */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: 0.3s;
+    border: none;
+}
+
+.btn:hover {
+    background-color: #990000; /* Vermelho mais escuro ao passar o mouse */
+    color: white;
+}
+
+/* Estilo dos Cards de Informação */
+.info-section {
+    padding: 50px 5%;
+    text-align: center;
+}
+
+.info-section h2 {
+    margin-bottom: 30px;
+    color: #0b3b85; /* Azul Royal */
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.card {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    width: 300px;
+    text-align: left;
+    border-top: 4px solid #1452b3; /* Borda superior Azul Royal */
+}
+
+.card h3 {
+    color: #cc0000; /* Títulos dos cards em Vermelho */
+    margin-bottom: 10px;
+}
+
+/* Estilo da Seção de História */
+.history-section {
+    padding: 60px 5%;
+    background-color: white;
+    text-align: center;
+}
+
+.history-section h2 {
+    color: #0b3b85;
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.history-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    background-color: #f4f7f6;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+    border-left: 5px solid #cc0000; /* Destaque lateral em Vermelho */
+}
+
+.history-content p {
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #444;
+}
+
+/* Rodapé */
+footer {
+    background-color: #08295c; /* Azul bem escuro para fechar a página */
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+
+footer a {
+    color: #ffcccc;
+    text-decoration: none;
+}
