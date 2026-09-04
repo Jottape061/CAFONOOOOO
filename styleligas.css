@@ -1,24 +1,24 @@
-/* ================================
-   VARIÁVEIS
-================================ */
-
 :root {
-    --navy: #071730;
-    --navy-light: #0B2545;
-    --red: #C8352B;
-    --cream: #FAF9F6;
-    --white: #FFFFFF;
-    --text: #1A1A1A;
-    --text-light: #5F6670;
-    --border: #E5E3DE;
+    --azul: #071a36;
+    --azul-2: #0b2345;
+    --vermelho: #d3382f;
 
-    --shadow: 0 8px 25px rgba(7, 23, 48, 0.08);
+    --fundo: #f8f7f4;
+    --branco: #ffffff;
+
+    --texto: #17202d;
+    --texto-suave: #68717d;
+
+    --borda: #e5e3df;
+
+    --sombra: 0 8px 25px rgba(7, 26, 54, 0.07);
+    --sombra-hover: 0 15px 35px rgba(7, 26, 54, 0.12);
 }
 
 
-/* ================================
+/* =========================================================
    RESET
-================================ */
+========================================================= */
 
 * {
     margin: 0;
@@ -31,22 +31,29 @@ html {
 }
 
 body {
-    background: var(--cream);
-    color: var(--text);
+    min-height: 100vh;
+
+    background: var(--fundo);
+    color: var(--texto);
+
     font-family: Arial, Helvetica, sans-serif;
     line-height: 1.6;
+
+    display: flex;
+    flex-direction: column;
 }
 
 
-/* ================================
-   NAVBAR
-================================ */
+/* =========================================================
+   CABEÇALHO
+========================================================= */
 
-nav,
-.navbar {
+header {
+    width: 100%;
     height: 68px;
-    background: var(--navy);
-    border-bottom: 2px solid var(--red);
+
+    background: var(--azul);
+    border-bottom: 2px solid var(--vermelho);
 
     display: flex;
     align-items: center;
@@ -54,268 +61,526 @@ nav,
 
     padding: 0 32px;
 
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: relative;
+    z-index: 10;
 }
 
-nav .logo,
-.navbar .logo {
-    color: var(--white);
+
+/* Logo */
+
+.logo {
+    color: var(--branco);
+
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 20px;
-    font-weight: 700;
+    font-size: 19px;
+    font-weight: bold;
+
+    letter-spacing: -0.2px;
 }
 
-nav ul,
-.navbar ul {
+
+/* Menu */
+
+nav ul {
     display: flex;
     align-items: center;
-    gap: 28px;
+    gap: 30px;
+
     list-style: none;
 }
 
-nav a,
-.navbar a {
-    color: var(--white);
+nav a {
+    position: relative;
+
+    color: var(--branco);
     text-decoration: none;
+
     font-size: 14px;
     font-weight: 600;
+
+    padding: 24px 0;
 
     transition: color 0.2s ease;
 }
 
-nav a:hover,
-.navbar a:hover {
-    color: #F5B6B2;
+nav a::after {
+    content: "";
+
+    position: absolute;
+    left: 0;
+    bottom: 17px;
+
+    width: 0;
+    height: 2px;
+
+    background: var(--vermelho);
+
+    transition: width 0.2s ease;
+}
+
+nav a:hover {
+    color: #e9edf3;
+}
+
+nav a:hover::after {
+    width: 100%;
 }
 
 
-/* ================================
-   CONTEÚDO PRINCIPAL
-================================ */
+/* =========================================================
+   HERO
+========================================================= */
 
-main {
-    width: min(1150px, calc(100% - 40px));
+.hero {
+    width: min(1120px, calc(100% - 48px));
+
     margin: 0 auto;
-    padding: 60px 0 80px;
+
+    padding: 64px 0 48px !important;
 }
 
+.hero h1 {
+    color: var(--azul);
 
-/* ================================
-   TÍTULO DA PÁGINA
-================================ */
-
-main > h1 {
-    color: var(--navy);
     font-family: Georgia, "Times New Roman", serif;
-    font-size: clamp(32px, 4vw, 46px);
-    line-height: 1.1;
-    margin-bottom: 12px;
+    font-size: clamp(36px, 5vw, 48px);
+    font-weight: 700;
+
+    line-height: 1.08;
+    letter-spacing: -1px;
+
+    margin-bottom: 15px;
 }
 
-main > p {
-    color: var(--text-light);
+.hero p {
+    max-width: 680px;
+
+    color: var(--texto-suave);
+
     font-size: 16px;
-    margin-bottom: 50px;
+    line-height: 1.7;
 }
 
 
-/* ================================
-   SEÇÃO
-================================ */
+/* Pequeno detalhe vermelho abaixo do título */
 
-section {
-    margin-top: 45px;
+.hero h1::after {
+    content: "";
+
+    display: block;
+
+    width: 48px;
+    height: 3px;
+
+    background: var(--vermelho);
+
+    margin-top: 20px;
 }
 
-section h2 {
-    color: var(--navy);
+
+/* =========================================================
+   SEÇÃO DE LIGAS
+========================================================= */
+
+.info-section {
+    width: min(1120px, calc(100% - 48px));
+
+    margin: 0 auto;
+
+    padding: 10px 0 55px;
+}
+
+.info-section h2,
+.history-section h2 {
+    color: var(--azul);
+
     font-family: Georgia, "Times New Roman", serif;
-    font-size: 27px;
+    font-size: 28px;
+    line-height: 1.2;
+
     margin-bottom: 25px;
 }
 
 
-/* ================================
-   CARDS DAS LIGAS
-================================ */
+/* =========================================================
+   GRID DOS CARDS
+========================================================= */
 
-.ligas {
+.cards {
     display: grid;
+
     grid-template-columns: repeat(2, minmax(0, 1fr));
+
     gap: 22px;
 }
 
-.liga,
-.liga-card,
-section article {
-    background: var(--white);
 
-    border: 1px solid var(--border);
-    border-radius: 10px;
+/* =========================================================
+   CARD
+========================================================= */
 
-    padding: 28px;
+.card {
+    position: relative;
 
-    box-shadow: var(--shadow);
+    background: var(--branco);
+
+    border: 1px solid var(--borda);
+    border-radius: 8px;
+
+    padding: 30px 30px 27px;
+
+    box-shadow: var(--sombra);
+
+    min-height: 235px;
+
+    display: flex;
+    flex-direction: column;
 
     transition:
-        transform 0.2s ease,
-        box-shadow 0.2s ease,
-        border-color 0.2s ease;
-}
-
-.liga:hover,
-.liga-card:hover,
-section article:hover {
-    transform: translateY(-4px);
-
-    border-color: rgba(200, 53, 43, 0.35);
-
-    box-shadow:
-        0 14px 35px rgba(7, 23, 48, 0.12);
+        transform 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
 }
 
 
-/* ================================
-   NOME DA LIGA
-================================ */
+/* Barrinha lateral */
 
-.liga h3,
-.liga-card h3,
-section article h3 {
-    color: var(--navy);
+.card::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 25px;
+    bottom: 25px;
+
+    width: 3px;
+
+    background: var(--vermelho);
+
+    border-radius: 0 3px 3px 0;
+
+    transform: scaleY(0.45);
+    transform-origin: center;
+
+    opacity: 0.8;
+
+    transition:
+        transform 0.22s ease,
+        opacity 0.22s ease;
+}
+
+
+.card:hover {
+    transform: translateY(-5px);
+
+    border-color: #d9d7d3;
+
+    box-shadow: var(--sombra-hover);
+}
+
+.card:hover::before {
+    transform: scaleY(1);
+    opacity: 1;
+}
+
+
+/* =========================================================
+   TÍTULO DO CARD
+========================================================= */
+
+.card h3 {
+    color: var(--azul);
 
     font-family: Georgia, "Times New Roman", serif;
-
     font-size: 21px;
+    font-weight: 700;
+
     line-height: 1.3;
 
-    margin-bottom: 10px;
+    margin-bottom: 12px;
 }
 
 
-/* ================================
-   DESCRIÇÃO
-================================ */
+/* =========================================================
+   TEXTO DO CARD
+========================================================= */
 
-.liga p,
-.liga-card p,
-section article p {
-    color: var(--text-light);
+.card p {
+    color: var(--texto-suave);
 
-    font-size: 15px;
-    line-height: 1.65;
+    font-size: 14.5px;
+    line-height: 1.7;
 
-    margin-bottom: 22px;
+    margin-bottom: 20px;
 }
 
 
-/* ================================
-   BOTÃO / LINK DO EDITAL
-================================ */
+/* Remove o <br> visualmente sem precisar mexer no HTML */
 
-.liga a,
-.liga-card a,
-section article a {
+.card br {
+    display: none;
+}
+
+
+/* =========================================================
+   BOTÃO "VER EDITAL"
+========================================================= */
+
+.card .btn {
     display: inline-flex;
     align-items: center;
 
-    color: var(--red);
+    align-self: flex-start;
 
-    font-size: 14px;
-    font-weight: 700;
+    padding: 9px 15px !important;
+
+    background: var(--vermelho);
+
+    color: var(--branco);
+
+    border-radius: 4px;
 
     text-decoration: none;
 
-    transition: all 0.2s ease;
+    font-size: 13px !important;
+    font-weight: 700;
+
+    margin-top: auto;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease,
+        box-shadow 0.2s ease;
 }
 
-.liga a::after,
-.liga-card a::after,
-section article a::after {
+.card .btn::after {
     content: " →";
+
+    margin-left: 5px;
 
     transition: transform 0.2s ease;
 }
 
-.liga a:hover,
-.liga-card a:hover,
-section article a:hover {
-    color: var(--navy);
+.card .btn:hover {
+    background: #b92f28;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 12px rgba(211, 56, 47, 0.22);
 }
 
-.liga a:hover::after,
-.liga-card a:hover::after,
-section article a:hover::after {
-    transform: translateX(4px);
+.card .btn:hover::after {
+    transform: translateX(3px);
 }
 
 
-/* ================================
-   PROCESSOS SELETIVOS
-================================ */
+/* =========================================================
+   SEÇÃO — PROCESSOS SELETIVOS
+========================================================= */
 
-.processos {
-    background: var(--navy);
+.history-section {
+    width: min(1120px, calc(100% - 48px));
 
-    color: var(--white);
+    margin: 0 auto 50px !important;
 
-    border-radius: 12px;
+    padding: 38px 42px;
 
-    padding: 35px;
+    background: var(--azul);
 
-    margin-top: 55px;
+    border-radius: 9px;
+
+    position: relative;
+
+    overflow: hidden;
 }
 
-.processos h2 {
-    color: var(--white);
+
+/* Detalhe vermelho */
+
+.history-section::before {
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+    top: 0;
+    bottom: 0;
+
+    width: 5px;
+
+    background: var(--vermelho);
+}
+
+
+/* Título */
+
+.history-section h2 {
+    color: var(--branco);
+
+    margin-bottom: 15px;
+}
+
+
+/* Texto */
+
+.history-content {
+    max-width: 900px;
+}
+
+.history-content p {
+    color: #d8e0ea;
+
+    font-size: 15px;
+    line-height: 1.75;
+
     margin-bottom: 12px;
 }
 
-.processos p {
-    color: #D7E0EB;
-    margin: 0;
+.history-content p:last-child {
+    margin-bottom: 0;
 }
 
 
-/* ================================
-   RESPONSIVIDADE
-================================ */
+/* =========================================================
+   RODAPÉ
+========================================================= */
 
-@media (max-width: 750px) {
+footer {
+    width: 100%;
 
-    nav,
-    .navbar {
-        padding: 0 18px;
+    margin-top: auto;
+
+    padding: 25px 20px;
+
+    background: var(--azul);
+
+    border-top: 2px solid var(--vermelho);
+
+    text-align: center;
+}
+
+footer p {
+    color: #bfc9d6;
+
+    font-size: 13px;
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — TABLET
+========================================================= */
+
+@media (max-width: 800px) {
+
+    header {
+        padding: 0 22px;
     }
 
-    nav ul,
-    .navbar ul {
-        gap: 14px;
+    nav ul {
+        gap: 20px;
     }
 
-    nav a,
-    .navbar a {
-        font-size: 12px;
+    .hero,
+    .info-section,
+    .history-section {
+        width: min(100% - 36px, 650px);
     }
 
-    main {
-        width: min(100% - 28px, 600px);
-        padding-top: 40px;
-    }
-
-    .ligas {
+    .cards {
         grid-template-columns: 1fr;
     }
 
-    section h2 {
+    .hero {
+        padding-top: 50px !important;
+    }
+
+    .history-section {
+        padding: 32px 30px;
+    }
+}
+
+
+/* =========================================================
+   RESPONSIVIDADE — CELULAR
+========================================================= */
+
+@media (max-width: 550px) {
+
+    header {
+        height: auto;
+        min-height: 65px;
+
+        padding: 15px 18px;
+
+        gap: 15px;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    nav ul {
+        gap: 13px;
+    }
+
+    nav a {
+        font-size: 11px;
+    }
+
+    nav a::after {
+        bottom: 13px;
+    }
+
+    .hero,
+    .info-section,
+    .history-section {
+        width: calc(100% - 28px);
+    }
+
+    .hero {
+        padding: 42px 0 35px !important;
+    }
+
+    .hero h1 {
+        font-size: 35px;
+    }
+
+    .hero p {
+        font-size: 14px;
+    }
+
+    .info-section {
+        padding-bottom: 35px;
+    }
+
+    .info-section h2,
+    .history-section h2 {
         font-size: 24px;
     }
 
-    .liga,
-    .liga-card,
-    section article {
-        padding: 22px;
+    .card {
+        padding: 25px 24px 23px;
+        min-height: 220px;
+    }
+
+    .card h3 {
+        font-size: 19px;
+    }
+
+    .history-section {
+        padding: 30px 25px;
+    }
+
+    .history-content p {
+        font-size: 14px;
+    }
+
+    footer {
+        padding: 22px 15px;
+    }
+
+    footer p {
+        font-size: 11px;
     }
 }
