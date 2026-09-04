@@ -174,25 +174,35 @@ footer a {
     margin-top: 30px;
 }
 
+/* Container que segura os cards em grade */
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 25px;
+    width: 100%;
+}
+
+/* Estilo individual de cada card */
 .card {
     background: #ffffff;
     color: #333333;
     padding: 25px;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-    flex: 1;
-    min-width: 280px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    flex: 1 1 300px; /* Cresce, encolhe e tem uma largura base de 300px */
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    border-top: 4px solid #0b3b85; /* Opcional: detalhe em Royal Blue para combinar */
 }
 
 .card h3 {
-    color: #0b3b85;
-    margin-bottom: 15px;
+    color: #cc0000; /* Vermelho combinando com o tema */
+    margin-bottom: 10px;
 }
 
 .card p {
     margin-bottom: 20px;
-    color: #555;
+    color: #555555;
 }
