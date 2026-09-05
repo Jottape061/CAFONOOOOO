@@ -102,12 +102,20 @@
             <h2>Painel Exclusivo de Membros</h2>
             <p style="text-align: center; margin-bottom: 2rem; color: #555;">Bem-vindo(a) à área restrita do CAFONO. Aqui ficam disponíveis os documentos, certificados e comprovantes.</p>
             
-            <!-- Bloco 1: Certificados -->
-            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 1.5rem;">
-                <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📁 Certificados Disponíveis</h3>
-                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Baixe os arquivos de participação em eventos e ligas acadêmicas.</p>
-                <a href="#" target="_blank" class="btn" style="display:inline-block; padding: 0.5rem 1rem; width: auto;">Baixar Certificados (.zip)</a>
-            </div>
+            <div class="card-membros">
+    <h3>📂 Certificados</h3>
+    <p>Digite seu nome completo para consultar e baixar seus certificados de participação.</p>
+    
+    <!-- Área de busca integrada no próprio card -->
+    <div style="margin-top: 1rem; display: flex; gap: 0.5rem; flex-wrap: wrap;">
+        <input type="text" id="inputBuscaCertificado" placeholder="Seu nome completo..." style="flex: 1; min-width: 200px; padding: 0.6rem; border: 1px solid #ccc; border-radius: 4px; outline: none;">
+        <button onclick="consultarCertificadosMembros()" style="background-color: var(--primary-blue, #0b3954); color: white; border: none; padding: 0.6rem 1.2rem; border-radius: 4px; font-weight: 600; cursor: pointer;">Buscar</button>
+    </div>
+
+    <!-- Onde vai aparecer o status ou os resultados -->
+    <div id="statusBuscaMembros" style="margin-top: 0.8rem; font-size: 0.9rem; color: #666; font-style: italic;"></div>
+    <div id="listaResultadosCertificados" style="margin-top: 1rem; text-align: left;"></div>
+</div>
 
             <!-- Bloco 2: Comprovantes de Compra -->
             <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 1.5rem;">
@@ -131,11 +139,15 @@
         <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
     </footer>
 
-    <!-- SCRIPTS DO FIREBASE -->
+    <footer>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- SCRIPTS DO FIREBASE E FUNÇÕES DA PÁGINA -->
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
         import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
-        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+        import { getFirestore, doc, setDoc, getDoc, collection, query, where, getDocs } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyAeIpFF0nDHQDCqjm4fym9jVsQfKWzDT5E",
@@ -187,7 +199,6 @@
                     const userCredential = await createUserWithEmailAndPassword(auth, email, password);
                     const user = userCredential.user;
 
-                    // Salva no banco de dados incluindo a matrícula e bloqueado por padrão
                     await setDoc(doc(db, "membros", user.uid), {
                         nome: name,
                         matricula: matricula,
@@ -241,6 +252,114 @@
                 location.reload();
             });
         }
+
+        // ==========================================
+        // FUNÇÃO DE BUSCA DE CERTIFICADOS NO FIRESTORE
+        // ==========================================
+        window.consultarCertificadosMembros = async function() {
+            const nomeDigitado = document.getElementById('inputBuscaCertificado').value.trim();
+            const statusDiv = document.getElementById('statusBuscaMembros');
+            const resultadosDiv = document.getElementById('listaResultadosCertificados');
+
+            resultadosDiv.innerHTML = '';
+
+            if (!nomeDigitado) {
+                statusDiv.innerHTML = "Por favor, digite o seu nome completo.";
+                return;
+            }
+
+            statusDiv.innerHTML = "Pesquisando certificados...";
+
+            try {
+                const q = query(collection(db, "certificados"), where("nomeCompleto", "==", nomeDigitado));
+                const querySnapshot = await getDocs(q);
+
+                if (querySnapshot.empty) {
+                    statusDiv.innerHTML = "Nenhum certificado encontrado para este nome.";
+                    return;
+                }
+
+                statusDiv.innerHTML = "";
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const item = document.createElement('div');
+                    item.style.cssText = "background: #f7f9fa; border: 1px solid #ddd; padding: 0.8rem; margin-bottom: 0.5rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;";
+                    item.innerHTML = `
+                        <div>
+                            <strong style="color: #0b3954; font-size: 0.95rem;">${data.tituloEvento || 'Certificado'}</strong><br>
+                            <span style="font-size: 0.8rem; color: #555;">Carga Horária: ${data.cargaHoraria || 'N/D'}</span>
+                        </div>
+                        <a href="${data.urlDownload}" target="_blank" style="background-color: #e03636; color: white; padding: 0.4rem 0.8rem; text-decoration: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">Baixar PDF</a>
+                    `;
+                    resultadosDiv.appendChild(item);
+                });
+
+            } catch (error) {
+                console.error("Erro na busca: ", error);
+                statusDiv.innerHTML = "Erro ao consultar o banco de dados.";
+            }
+        };
+        // ==========================================
+        // FUNÇÃO DE BUSCA DE CERTIFICADOS NO FIRESTORE
+        // ==========================================
+        window.consultarCertificadosMembros = async function() {
+            const nomeDigitado = document.getElementById('inputBuscaCertificado').value.trim().toLowerCase();
+            const statusDiv = document.getElementById('statusBuscaMembros');
+            const resultadosDiv = document.getElementById('listaResultadosCertificados');
+
+            resultadosDiv.innerHTML = '';
+
+            if (!nomeDigitado) {
+                statusDiv.innerHTML = "Por favor, digite o seu nome completo.";
+                return;
+            }
+
+            statusDiv.innerHTML = "Pesquisando certificados...";
+
+            try {
+                // Busca todos os certificados para filtrar de forma flexível
+                const querySnapshot = await getDocs(collection(db, "certificados"));
+
+                if (querySnapshot.empty) {
+                    statusDiv.innerHTML = "Nenhum certificado cadastrado no sistema.";
+                    return;
+                }
+
+                let encontrados = 0;
+                resultadosDiv.innerHTML = '';
+
+                querySnapshot.forEach((doc) => {
+                    const data = doc.data();
+                    const nomeNoBanco = (data.nomeCompleto || "").toLowerCase();
+
+                    // Verifica se o nome digitado está contido no nome cadastrado
+                    if (nomeNoBanco.includes(nomeDigitado)) {
+                        encontrados++;
+                        const item = document.createElement('div');
+                        item.style.cssText = "background: #f7f9fa; border: 1px solid #ddd; padding: 0.8rem; margin-bottom: 0.5rem; border-radius: 4px; display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; flex-wrap: wrap;";
+                        item.innerHTML = `
+                            <div>
+                                <strong style="color: #0b3954; font-size: 0.95rem;">${data.tituloEvento || 'Certificado'}</strong><br>
+                                <span style="font-size: 0.8rem; color: #555;">Carga Horária: ${data.cargaHoraria || 'N/D'}</span>
+                            </div>
+                            <a href="${data.urlDownload}" target="_blank" style="background-color: #e03636; color: white; padding: 0.4rem 0.8rem; text-decoration: none; border-radius: 4px; font-size: 0.85rem; font-weight: 600;">Baixar PDF</a>
+                        `;
+                        resultadosDiv.appendChild(item);
+                    }
+                });
+
+                if (encontrados === 0) {
+                    statusDiv.innerHTML = "Nenhum certificado encontrado para este nome.";
+                } else {
+                    statusDiv.innerHTML = "";
+                }
+
+            } catch (error) {
+                console.error("Erro na busca: ", error);
+                statusDiv.innerHTML = "Erro ao consultar o banco de dados.";
+            }
+        };
     </script>
+    
 </body>
 </html>
