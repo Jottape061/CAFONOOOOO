@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desenvolvedor - CAFONO UnB</title>
+    <style>
+        :root {
+            --primary-blue: #0b3954;
+            --secondary-blue: #1d638c;
+            --accent-red: #e03636;
+            --accent-red-hover: #b52929;
+            --dark-color: #1a1a1a;
+            --light-color: #f7f9fa;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-color); color: var(--dark-color); line-height: 1.6; }
+        
+        header { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: var(--white); padding: 2.5rem 1rem; text-align: center; border-bottom: 5px solid var(--accent-red); }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.3rem; }
+        header p { font-size: 1rem; opacity: 0.9; }
+
+        nav { background-color: var(--primary-blue); display: flex; justify-content: center; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 2px solid var(--accent-red); flex-wrap: wrap; }
+        nav a { color: var(--white); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.3s ease; }
+        nav a:hover, nav a.active { background-color: var(--accent-red); }
+
+        .container { max-width: 700px; margin: 3rem auto; padding: 0 1.5rem; }
+        
+        .dev-box { background: var(--white); padding: 3rem 2rem; border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); text-align: center; border-top: 4px solid var(--primary-blue); }
+        .dev-img { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid var(--primary-blue); margin-bottom: 1.5rem; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
+        h2 { color: var(--primary-blue); font-size: 2rem; margin-bottom: 0.5rem; }
+        .dev-course { color: var(--secondary-blue); font-weight: 600; font-size: 1.1rem; margin-bottom: 1.5rem; }
+        .dev-bio { color: #444; font-size: 1rem; line-height: 1.7; max-width: 550px; margin: 0 auto; }
+
+        footer { background-color: var(--primary-blue); color: var(--white); text-align: center; padding: 1.5rem; margin-top: 5rem; border-top: 4px solid var(--accent-red); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CAFONO UnB</h1>
+        <p>Centro Acadêmico de Fonoaudiologia — Campus Ceilândia</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Sobre o Curso</a>
+        <a href="ligas.html">Ligas</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a href="materiais.html">Materiais</a>
+        <a href="membros.html">Área de Membros</a>
+        <a href="desenvolvedor.html" class="active">Desenvolvedor</a>
+    </nav>
+
+    <div class="container">
+        <div class="dev-box">
+            <!-- 💡 Substitua 'URL_DA_SUA_FOTO_AQUI' pelo link direto da sua foto -->
+            <img src="foto-dev.jpg" alt="Foto do Desenvolvedor - João Pedro Guimarães Guedes" class="dev-img">
+            <h2>João Pedro Guimarães Guedes - 261043289</h2>
+            <p class="dev-course">Fonoaudiologia — UnB (Campus Ceilândia)</p>
+            <p class="dev-bio">Responsável pela concepção, arquitetura de dados (Firebase) e desenvolvimento completo de todo o ecossistema digital, site oficial e Área de Membros do CAFONO.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
