@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CAFONO - Centro Acadêmico de Fonoaudiologia UnB</title>
+    <title>Produtos - CAFONO UnB</title>
     <style>
         :root {
-            --primary-color: #0d5c75;
-            --secondary-color: #20a4f3;
-            --accent-color: #ff6b6b;
-            --dark-color: #2b2d42;
-            --light-color: #f4f9f9;
+            --primary-blue: #0b3954;
+            --secondary-blue: #1d638c;
+            --accent-red: #e03636;
+            --accent-red-hover: #b52929;
+            --dark-color: #1a1a1a;
+            --light-color: #f7f9fa;
             --white: #ffffff;
         }
 
@@ -28,10 +29,11 @@
         }
 
         header {
-            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue));
             color: var(--white);
-            padding: 2rem 1rem;
+            padding: 2.5rem 1rem;
             text-align: center;
+            border-bottom: 5px solid var(--accent-red);
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
 
@@ -42,11 +44,11 @@
 
         header p {
             font-size: 1.1rem;
-            opacity: 0.9;
+            opacity: 0.95;
         }
 
         nav {
-            background-color: var(--dark-color);
+            background-color: var(--primary-blue);
             display: flex;
             justify-content: center;
             gap: 1rem;
@@ -54,6 +56,7 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            border-bottom: 2px solid var(--accent-red);
         }
 
         nav a {
@@ -66,38 +69,30 @@
         }
 
         nav a:hover, nav a.active {
-            background-color: var(--secondary-color);
+            background-color: var(--accent-red);
         }
 
         .container {
             max-width: 1200px;
             margin: 2rem auto;
             padding: 0 1rem;
-        }
-
-        .tab-content {
-            display: none;
-        }
-
-        .tab-content.active {
-            display: block;
+            min-height: 50vh;
         }
 
         h2 {
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
+            color: var(--primary-blue);
+            margin-bottom: 1rem;
             font-size: 2rem;
-            border-bottom: 3px solid var(--secondary-color);
+            border-bottom: 3px solid var(--accent-red);
             padding-bottom: 0.5rem;
             display: inline-block;
         }
 
-        /* Grid de Produtos */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-top: 1rem;
+            margin-top: 1.5rem;
         }
 
         .product-card {
@@ -109,15 +104,17 @@
             display: flex;
             flex-direction: column;
             justify-content: space-between;
+            border-top: 4px solid var(--secondary-blue);
         }
 
         .product-card:hover {
             transform: translateY(-5px);
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-top-color: var(--accent-red);
         }
 
         .product-header {
-            background-color: var(--primary-color);
+            background-color: var(--primary-blue);
             color: var(--white);
             padding: 1rem;
             text-align: center;
@@ -137,9 +134,9 @@
         }
 
         .product-price {
-            font-size: 1.3rem;
+            font-size: 1.4rem;
             font-weight: bold;
-            color: var(--secondary-color);
+            color: var(--accent-red);
             margin-bottom: 1rem;
         }
 
@@ -152,7 +149,7 @@
 
         .btn {
             display: inline-block;
-            background-color: var(--secondary-color);
+            background-color: var(--accent-red);
             color: var(--white);
             padding: 0.6rem 1.2rem;
             border-radius: 4px;
@@ -164,7 +161,7 @@
         }
 
         .btn:hover {
-            background-color: var(--primary-color);
+            background-color: var(--accent-red-hover);
         }
 
         .badge {
@@ -187,11 +184,12 @@
         }
 
         footer {
-            background-color: var(--dark-color);
+            background-color: var(--primary-blue);
             color: var(--white);
             text-align: center;
             padding: 1.5rem;
             margin-top: 3rem;
+            border-top: 4px solid var(--accent-red);
         }
     </style>
 </head>
@@ -203,129 +201,129 @@
     </header>
 
     <nav>
-        <a href="#" onclick="switchTab('home', event)" class="active">Início</a>
-        <a href="#" onclick="switchTab('produtos', event)">Produtos</a>
-        <a href="#" onclick="switchTab('materiais', event)">Materiais</a>
-        <a href="#" onclick="switchTab('ligas', event)">Ligas & Estágios</a>
-        <a href="#" onclick="switchTab('sobre', event)">Sobre</a>
+        <a href="index.html">Sobre o Curso</a>
+        <a href="ligas.html">Ligas</a>
+        <a href="produtos.html" class="active">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a href="materiais.html">Materiais</a>
     </nav>
 
     <div class="container">
-        <!-- Aba Início -->
-        <div id="home" class="tab-content active">
-            <h2>Bem-vindo ao CAFONO!</h2>
-            <p style="margin-top: 1rem; font-size: 1.1rem;">Este é o portal oficial de apoio aos estudantes de Fonoaudiologia da Universidade de Brasília (UnB - Ceilândia). Navegue pelas abas acima para conferir os produtos exclusivos do CA, acessar materiais de estudo, ver informações sobre ligas acadêmicas e muito mais.</p>
-        </div>
-
-        <!-- Aba Produtos -->
-        <div id="produtos" class="tab-content">
-            <h2>Lojinha do CAFONO</h2>
-            <p style="margin-bottom: 1.5rem;">Adquira os produtos oficiais do curso e ajude a financiar as atividades do Centro Acadêmico!</p>
-            
-            <div class="products-grid">
-                <!-- Produto 1 -->
-                <div class="product-card">
-                    <div>
-                        <div class="product-header">Jaleco Bordado CAFONO</div>
-                        <div class="product-body">
-                            <span class="badge badge-success">Disponível sob encomenda</span>
-                            <p>Jaleco de alta qualidade com o brasão da Fonoaudiologia e o logo do CAFONO bordado no bolso.</p>
-                            <div class="product-price">R$ 110,00</div>
-                        </div>
-                    </div>
-                    <div class="product-footer">
-                        <a href="https://wa.me/" target="_blank" class="btn">Encomendar via WhatsApp</a>
+        <h2>Lojinha do CAFONO</h2>
+        <p style="margin-bottom: 1rem;">
+            Confira também o nosso <a href="https://www.canva.com/design/DAHM9LYCMQI/YTKuFziGyj7Aw_cuHCoDjg/view?utm_content=DAHM9LYCMQI&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h37253170b6#11" target="_blank" style="color: var(--accent-red); font-weight: bold; text-decoration: underline;">Portfólio / Catálogo Completo</a> para ver mais fotos e detalhes dos produtos!
+        </p>
+        <p style="margin-bottom: 0.5rem;">Adquira os produtos oficiais do curso e apoie as iniciativas do Centro Acadêmico!</p>
+        
+        <div class="products-grid">
+            <!-- Produto 1 -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Caneca Fonoaudiologia</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob encomenda</span>
+                        <p>Caneca personalizada para acompanhar você nos plantões e aulas no campus.</p>
+                        <div class="product-price">R$ 40,00</div>
                     </div>
                 </div>
+<div class="product-footer">
+    <a href="https://wa.me/+556191424526?text=Olá!%20Gostaria%20de%20encomendar%20a%20Caneca%20Fonoaudiologia." target="_blank" class="btn">Encomendar</a>
+</div>
+            </div>
 
-                <!-- Produto 2 -->
-                <div class="product-card">
-                    <div>
-                        <div class="product-header">Bloco de Anamnese & Fichas</div>
-                        <div class="product-body">
-                            <span class="badge badge-success">Pronta Entrega</span>
-                            <p>Bloco com 50 folhas contendo modelos práticos para triagem e atendimento clínico em linguagem, voz, audição e motricidade orofacial.</p>
-                            <div class="product-price">R$ 25,00</div>
-                        </div>
-                    </div>
-                    <div class="product-footer">
-                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
+            <!-- Produto 2 -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Tirante Fonoaudiologia</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob Encomenda</span>
+                        <p>Tirante com o emblema oficial da Fonoaudiologia para usar no uniforme.</p>
+                        <div class="product-price">R$ 15,00</div>
                     </div>
                 </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20o%20Tirante%20Fonoaudiologia." target="_blank" class="btn">Encomendar</a>
+                </div>
+            </div>
 
-                <!-- Produto 3 -->
-                <div class="product-card">
-                    <div>
-                        <div class="product-header">Caneca Térmica / Porcelana</div>
-                        <div class="product-body">
-                            <span class="badge badge-success">Pronta Entrega</span>
-                            <p>Caneca personalizada do CAFONO para acompanhar você nos plantões e nas aulas teóricas no campus.</p>
-                            <div class="product-price">R$ 35,00</div>
-                        </div>
-                    </div>
-                    <div class="product-footer">
-                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
+            <!-- Produto 3 -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Cropped Regata</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob Encomenda</span>
+                        <p>Regata com o emblema inspirado na Fonoaudiologia para usar no uniforme.</p>
+                        <div class="product-price">R$ 55,00</div>
                     </div>
                 </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20a%20Cropped%20Regata." target="_blank" class="btn">Encomendar</a>
+                </div>
+            </div>
 
-                <!-- Produto 4 -->
-                <div class="product-card">
-                    <div>
-                        <div class="product-header">Pin / Broche do Símbolo</div>
-                        <div class="product-body">
-                            <span class="badge badge-warning">Últimas unidades</span>
-                            <p>Pin metálico refinado com o emblema oficial da Fonoaudiologia para usar no jaleco ou mochila.</p>
-                            <div class="product-price">R$ 15,00</div>
-                        </div>
+            <!-- Produto 4 -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Bottons Audiologia, UNB, Fonoaudiologia</div>
+                    <div class="product-body">
+                        <span class="badge badge-warning">Sob Encomenda</span>
+                        <p>Pin refinado com o emblema oficial da Fonoaudiologia para jaleco ou mochila.</p>
+                        <div class="product-price">R$ 06,00</div>
                     </div>
-                    <div class="product-footer">
-                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
-                    </div>
+                </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20o%20Bottons%20[Digite aqui o botton desejado]" target="_blank" class="btn">Encomendar</a>
                 </div>
             </div>
         </div>
-
-        <!-- Aba Materiais -->
-        <div id="materiais" class="tab-content">
-            <h2>Materiais de Estudo</h2>
-            <p style="margin-top: 1rem;">Repositório de resumos, mapas mentais e provas anteriores organizados por semestre para ajudar na sua jornada acadêmica.</p>
-        </div>
-
-        <!-- Aba Ligas -->
-        <div id="ligas" class="tab-content">
-            <h2>Ligas Acadêmicas e Estágios</h2>
-            <p style="margin-top: 1rem;">Informações sobre as ligas da Fonoaudiologia UnB, editais de extensão e oportunidades de estágios na região do DF.</p>
-        </div>
-
-        <!-- Aba Sobre -->
-        <div id="sobre" class="tab-content">
-            <h2>Sobre o CAFONO</h2>
-            <p style="margin-top: 1rem;">O Centro Acadêmico de Fonoaudiologia representa os discentes do curso na Faculdade de Ceilândia (FCE/UnB), lutando por melhorias, integração e fortalecimento profissional.</p>
-        </div>
     </div>
 
-    <footer>
+    <!-- Produto 5 (Novo) -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Cropped Fonoaudiologia UnB</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob encomenda</span>
+                        <p>Cropped com estampa na frente escrito fonoaudiologia</p>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20a%20Cropped%20Fonoaudiologia%20UnB." target="_blank" class="btn">Encomendar</a>
+                </div>
+            </div>
+
+            <!-- Produto 6 (Novo) -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Camisa Fonoaudiologia Unb</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob encomenda</span>
+                        <p>Camisa com estampa da Fonoaudiologia, ideal para uso diário.</p>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20a%20Camisa%20Fonoaudiologia%20UnB." target="_blank" class="btn">Encomendar</a>
+                </div>
+            </div>
+
+            <!-- Produto 7 (Novo) -->
+            <div class="product-card">
+                <div>
+                    <div class="product-header">Camiseta Fonoaudiologia</div>
+                    <div class="product-body">
+                        <span class="badge badge-success">Sob encomenda</span>
+                        <p>Camiseta com estampa na frente e nas costas</p>
+                        <div class="product-price">R$ 55,00</div>
+                    </div>
+                </div>
+                <div class="product-footer">
+                    <a href="https://wa.me/556191424526?text=Olá!%20Gostaria%20de%20encomendar%20a%20Camiseta%20Fonoaudiologia." target="_blank" class="btn">Encomendar</a>
+                </div>
+            </div>
+            <footer>
         <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
     </footer>
-
-    <script>
-        function switchTab(tabId, event) {
-            event.preventDefault();
-            
-            // Remove active class from all tabs content
-            const tabs = document.querySelectorAll('.tab-content');
-            tabs.forEach(tab => tab.classList.remove('active'));
-
-            // Remove active class from all nav links
-            const navLinks = document.querySelectorAll('nav a');
-            navLinks.forEach(link => link.classList.remove('active'));
-
-            // Add active class to target tab
-            document.getElementById(tabId).classList.add('active');
-
-            // Add active class to clicked link
-            event.currentTarget.classList.add('active');
-        }
-    </script>
 </body>
 </html>

@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Área de Membros - CAFONO UnB</title>
+    <style>
+        :root {
+            --primary-blue: #0b3954;
+            --secondary-blue: #1d638c;
+            --accent-red: #e03636;
+            --accent-red-hover: #b52929;
+            --dark-color: #1a1a1a;
+            --light-color: #f7f9fa;
+            --white: #ffffff;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--light-color); color: var(--dark-color); line-height: 1.6; }
+        header { background: linear-gradient(135deg, var(--primary-blue), var(--secondary-blue)); color: var(--white); padding: 2.5rem 1rem; text-align: center; border-bottom: 5px solid var(--accent-red); }
+        header h1 { font-size: 2.5rem; margin-bottom: 0.5rem; }
+        nav { background-color: var(--primary-blue); display: flex; justify-content: center; gap: 1rem; padding: 0.75rem 1rem; border-bottom: 2px solid var(--accent-red); flex-wrap: wrap; }
+        nav a { color: var(--white); text-decoration: none; font-weight: 600; padding: 0.5rem 1rem; border-radius: 4px; transition: background 0.3s ease; }
+        nav a:hover, nav a.active { background-color: var(--accent-red); }
+
+        .container { max-width: 600px; margin: 3rem auto; padding: 2rem; background: var(--white); border-radius: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border-top: 4px solid var(--primary-blue); }
+        h2 { color: var(--primary-blue); margin-bottom: 1.5rem; text-align: center; font-size: 1.8rem; }
+        .form-group { margin-bottom: 1.2rem; }
+        label { display: block; margin-bottom: 0.4rem; font-weight: 600; }
+        input { width: 100%; padding: 0.8rem; border: 1px solid #ccc; border-radius: 4px; font-size: 1rem; }
+        .btn { display: block; width: 100%; background-color: var(--accent-red); color: var(--white); padding: 0.8rem; border: none; border-radius: 4px; font-size: 1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; margin-top: 1rem; text-align: center; text-decoration: none;}
+        .btn:hover { background-color: var(--accent-red-hover); }
+        .toggle-link { text-align: center; margin-top: 1rem; font-size: 0.9rem; }
+        .toggle-link a { color: var(--secondary-blue); text-decoration: none; font-weight: bold; cursor: pointer; }
+        .hidden { display: none !important; }
+        .alert { padding: 1rem; background-color: #fff3cd; color: #856404; border-radius: 4px; margin-bottom: 1rem; border: 1px solid #ffeeba; text-align: center; }
+        footer { background-color: var(--primary-blue); color: var(--white); text-align: center; padding: 1.5rem; margin-top: 5rem; border-top: 4px solid var(--accent-red); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CAFONO UnB</h1>
+        <p>Centro Acadêmico de Fonoaudiologia - Campus Ceilândia</p>
+    </header>
+
+    <nav>
+        <a href="index.html">Sobre o Curso</a>
+        <a href="ligas.html">Ligas</a>
+        <a href="produtos.html">Produtos</a>
+        <a href="contato.html">Contato</a>
+        <a href="materiais.html">Materiais</a>
+        <a href="membros.html" class="active">Membros CA</a>
+    </nav>
+
+    <div class="container">
+        <!-- TELA DE LOGIN / CADASTRO -->
+        <div id="auth-section">
+            <h2 id="form-title">Entrar na Área de Membros</h2>
+            
+            <div id="auth-alert" class="alert hidden"></div>
+
+            <form id="access-form">
+                <!-- Campos extras de cadastro -->
+                <div class="form-group register-only" style="display: none;">
+                    <label for="name">Nome Completo</label>
+                    <input type="text" id="name" placeholder="Seu nome completo">
+                </div>
+                <div class="form-group register-only" style="display: none;">
+                    <label for="matricula">Matrícula (UnB)</label>
+                    <input type="text" id="matricula" placeholder="Ex: 230000000">
+                </div>
+
+                <div class="form-group">
+                    <label for="email">E-mail</label>
+                    <input type="email" id="email" required placeholder="seu.email@exemplo.com">
+                </div>
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <input type="password" id="password" required placeholder="Sua senha">
+                </div>
+                <button type="submit" class="btn" id="submit-btn">Entrar</button>
+            </form>
+
+            <div class="toggle-link">
+                <p id="toggle-text">Não tem uma conta? <a onclick="toggleMode()">Cadastre-se aqui</a></p>
+            </div>
+        </div>
+
+        <!-- TELA DE AGUARDANDO APROVAÇÃO -->
+        <div id="pending-section" class="hidden" style="text-align: center;">
+            <h2>Cadastro Realizado! ⏳</h2>
+            <p style="margin: 1rem 0;">Seu pedido de acesso foi enviado para a diretoria do CAFONO. Assim que for aprovado, você poderá ver os certificados e comprovantes.</p>
+            <p style="margin-bottom: 1.5rem; font-size: 0.9rem; color: #666;">Deseja avisar a presidência no WhatsApp para agilizar?</p>
+            <a href="https://wa.me/5561999999999?text=Olá!%20Acabei%20de%20me%20cadastrar%20na%20Área%20de%20Membros%20do%20site%20do%20CAFONO.%20Poderia%20aprovar%20meu%20acesso?" target="_blank" class="btn" style="background-color: #25D366; display: inline-block;">Avisar no WhatsApp da Presidência</a>
+            <br><br><br>
+            <button onclick="logout()" style="background:none; border:none; color:var(--accent-red); cursor:pointer; font-weight:bold; font-size: 1rem;">Sair / Voltar</button>
+        </div>
+
+        <!-- TELA RESTRITA (CONTEÚDO DOS MEMBROS) -->
+        <div id="content-section" class="hidden">
+            <h2>Painel Exclusivo de Membros</h2>
+            <p style="text-align: center; margin-bottom: 2rem; color: #555;">Bem-vindo(a) à área restrita do CAFONO. Aqui ficam disponíveis os documentos, certificados e comprovantes.</p>
+            
+            <!-- Bloco 1: Certificados -->
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📁 Certificados Disponíveis</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Baixe os arquivos de participação em eventos e ligas acadêmicas.</p>
+                <a href="#" target="_blank" class="btn" style="display:inline-block; padding: 0.5rem 1rem; width: auto;">Baixar Certificados (.zip)</a>
+            </div>
+
+            <!-- Bloco 2: Comprovantes de Compra -->
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">📊 Comprovantes de Compra</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Transparência financeira e notas fiscais de gastos do Centro Acadêmico.</p>
+                <a href="https://drive.google.com/drive/folders/1H-_5y7K559PV170XgJjYs2YbWfu2A1JF" target="_blank" class="btn" style="display:inline-block; padding: 0.5rem 1rem; width: auto; background-color: var(--secondary-blue);">Ver Comprovantes</a>
+            </div>
+
+            <!-- Bloco 3: Pedidos do CA -->
+            <div style="background: #f8f9fa; padding: 1.5rem; border-radius: 6px; border: 1px solid #ddd; margin-bottom: 1.5rem;">
+                <h3 style="color: var(--primary-blue); margin-bottom: 0.5rem;">🛒 Pedidos do CA</h3>
+                <p style="font-size: 0.9rem; margin-bottom: 1rem;">Acompanhamento de materiais e pedidos em andamento do Centro Acadêmico.</p>
+                <a href="https://docs.google.com/spreadsheets/d/1pD2byLOWA13_NhMvm86cWZlPD4CR_-tZIKLhCO6K2iE/edit?usp=drivesdk" target="_blank" class="btn" style="display:inline-block; padding: 0.5rem 1rem; width: auto; background-color: var(--primary-blue);">Ver Pedidos</a>
+            </div>
+
+            <button onclick="logout()" class="btn" style="background-color: #6c757d;">Sair da Conta</button>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
+    </footer>
+
+    <!-- SCRIPTS DO FIREBASE -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+        import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+        import { getFirestore, doc, setDoc, getDoc } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js";
+
+        const firebaseConfig = {
+            apiKey: "AIzaSyAeIpFF0nDHQDCqjm4fym9jVsQfKWzDT5E",
+            authDomain: "cafono-membros.firebaseapp.com",
+            projectId: "cafono-membros",
+            storageBucket: "cafono-membros.firebasestorage.app",
+            messagingSenderId: "591969460246",
+            appId: "1:591969460246:web:0649636994aa4966f81537",
+            measurementId: "G-G6BLVPW4EB"
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let isRegistering = false;
+
+        window.toggleMode = function() {
+            isRegistering = !isRegistering;
+            document.getElementById('form-title').innerText = isRegistering ? 'Criar Conta de Membro' : 'Entrar na Área de Membros';
+            document.getElementById('submit-btn').innerText = isRegistering ? 'Cadastrar' : 'Entrar';
+            
+            const registerFields = document.querySelectorAll('.register-only');
+            registerFields.forEach(el => el.style.display = isRegistering ? 'block' : 'none');
+            
+            document.getElementById('name').required = isRegistering;
+            document.getElementById('matricula').required = isRegistering;
+
+            document.getElementById('toggle-text').innerHTML = isRegistering ? 
+                'Já tem uma conta? <a onclick="toggleMode()">Entre aqui</a>' : 
+                'Não tem uma conta? <a onclick="toggleMode()">Cadastre-se aqui</a>';
+            document.getElementById('auth-alert').classList.add('hidden');
+        }
+
+        const form = document.getElementById('access-form');
+        const alertBox = document.getElementById('auth-alert');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const name = document.getElementById('name').value;
+            const matricula = document.getElementById('matricula').value;
+
+            alertBox.classList.add('hidden');
+
+            try {
+                if (isRegistering) {
+                    const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                    const user = userCredential.user;
+
+                    // Salva no banco de dados incluindo a matrícula e bloqueado por padrão
+                    await setDoc(doc(db, "membros", user.uid), {
+                        nome: name,
+                        matricula: matricula,
+                        email: email,
+                        aprovado: false,
+                        cargo: "membro"
+                    });
+
+                    document.getElementById('auth-section').classList.add('hidden');
+                    document.getElementById('pending-section').classList.remove('hidden');
+                } else {
+                    await signInWithEmailAndPassword(auth, email, password);
+                }
+            } catch (error) {
+                alertBox.innerText = "Erro: " + error.message;
+                alertBox.classList.remove('hidden');
+            }
+        });
+
+        onAuthStateChanged(auth, async (user) => {
+            if (user) {
+                try {
+                    const docRef = doc(db, "membros", user.uid);
+                    const docSnap = await getDoc(docRef);
+
+                    if (docSnap.exists()) {
+                        const data = docSnap.data();
+                        
+                        if (data.aprovado === true || data.cargo === 'diretor') {
+                            document.getElementById('auth-section').classList.add('hidden');
+                            document.getElementById('pending-section').classList.add('hidden');
+                            document.getElementById('content-section').classList.remove('hidden');
+                        } else {
+                            document.getElementById('auth-section').classList.add('hidden');
+                            document.getElementById('content-section').classList.add('hidden');
+                            document.getElementById('pending-section').classList.remove('hidden');
+                        }
+                    } else {
+                        document.getElementById('auth-section').classList.add('hidden');
+                        document.getElementById('content-section').classList.add('hidden');
+                        document.getElementById('pending-section').classList.remove('hidden');
+                    }
+                } catch (err) {
+                    console.error("Erro ao buscar permissões:", err);
+                }
+            }
+        });
+
+        window.logout = function() {
+            signOut(auth).then(() => {
+                location.reload();
+            });
+        }
+    </script>
+</body>
+</html>
