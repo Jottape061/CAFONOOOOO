@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CAFONO - Centro Acadêmico de Fonoaudiologia UnB</title>
+    <style>
+        :root {
+            --primary-color: #0d5c75;
+            --secondary-color: #20a4f3;
+            --accent-color: #ff6b6b;
+            --dark-color: #2b2d42;
+            --light-color: #f4f9f9;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: var(--white);
+            padding: 2rem 1rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        nav {
+            background-color: var(--dark-color);
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 0.75rem 1rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            border-radius: 4px;
+            transition: background 0.3s ease;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--secondary-color);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        h2 {
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            border-bottom: 3px solid var(--secondary-color);
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+        /* Grid de Produtos */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .product-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 1rem;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .product-body {
+            padding: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .product-body p {
+            color: #555;
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .product-footer {
+            padding: 1rem 1.5rem;
+            background-color: #fafafa;
+            border-top: 1px solid #eee;
+            text-align: center;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background 0.3s ease;
+            width: 100%;
+            text-align: center;
+        }
+
+        .btn:hover {
+            background-color: var(--primary-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.5rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+
+        .badge-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+
+        .badge-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+
+        footer {
+            background-color: var(--dark-color);
+            color: var(--white);
+            text-align: center;
+            padding: 1.5rem;
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CAFONO UnB</h1>
+        <p>Centro Acadêmico de Fonoaudiologia - Campus Ceilândia</p>
+    </header>
+
+    <nav>
+        <a href="#" onclick="switchTab('home', event)" class="active">Início</a>
+        <a href="#" onclick="switchTab('produtos', event)">Produtos</a>
+        <a href="#" onclick="switchTab('materiais', event)">Materiais</a>
+        <a href="#" onclick="switchTab('ligas', event)">Ligas & Estágios</a>
+        <a href="#" onclick="switchTab('sobre', event)">Sobre</a>
+    </nav>
+
+    <div class="container">
+        <!-- Aba Início -->
+        <div id="home" class="tab-content active">
+            <h2>Bem-vindo ao CAFONO!</h2>
+            <p style="margin-top: 1rem; font-size: 1.1rem;">Este é o portal oficial de apoio aos estudantes de Fonoaudiologia da Universidade de Brasília (UnB - Ceilândia). Navegue pelas abas acima para conferir os produtos exclusivos do CA, acessar materiais de estudo, ver informações sobre ligas acadêmicas e muito mais.</p>
+        </div>
+
+        <!-- Aba Produtos -->
+        <div id="produtos" class="tab-content">
+            <h2>Lojinha do CAFONO</h2>
+            <p style="margin-bottom: 1.5rem;">Adquira os produtos oficiais do curso e ajude a financiar as atividades do Centro Acadêmico!</p>
+            
+            <div class="products-grid">
+                <!-- Produto 1 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-header">Jaleco Bordado CAFONO</div>
+                        <div class="product-body">
+                            <span class="badge badge-success">Disponível sob encomenda</span>
+                            <p>Jaleco de alta qualidade com o brasão da Fonoaudiologia e o logo do CAFONO bordado no bolso.</p>
+                            <div class="product-price">R$ 110,00</div>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <a href="https://wa.me/" target="_blank" class="btn">Encomendar via WhatsApp</a>
+                    </div>
+                </div>
+
+                <!-- Produto 2 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-header">Bloco de Anamnese & Fichas</div>
+                        <div class="product-body">
+                            <span class="badge badge-success">Pronta Entrega</span>
+                            <p>Bloco com 50 folhas contendo modelos práticos para triagem e atendimento clínico em linguagem, voz, audição e motricidade orofacial.</p>
+                            <div class="product-price">R$ 25,00</div>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+
+                <!-- Produto 3 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-header">Caneca Térmica / Porcelana</div>
+                        <div class="product-body">
+                            <span class="badge badge-success">Pronta Entrega</span>
+                            <p>Caneca personalizada do CAFONO para acompanhar você nos plantões e nas aulas teóricas no campus.</p>
+                            <div class="product-price">R$ 35,00</div>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+
+                <!-- Produto 4 -->
+                <div class="product-card">
+                    <div>
+                        <div class="product-header">Pin / Broche do Símbolo</div>
+                        <div class="product-body">
+                            <span class="badge badge-warning">Últimas unidades</span>
+                            <p>Pin metálico refinado com o emblema oficial da Fonoaudiologia para usar no jaleco ou mochila.</p>
+                            <div class="product-price">R$ 15,00</div>
+                        </div>
+                    </div>
+                    <div class="product-footer">
+                        <a href="https://wa.me/" target="_blank" class="btn">Comprar</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Aba Materiais -->
+        <div id="materiais" class="tab-content">
+            <h2>Materiais de Estudo</h2>
+            <p style="margin-top: 1rem;">Repositório de resumos, mapas mentais e provas anteriores organizados por semestre para ajudar na sua jornada acadêmica.</p>
+        </div>
+
+        <!-- Aba Ligas -->
+        <div id="ligas" class="tab-content">
+            <h2>Ligas Acadêmicas e Estágios</h2>
+            <p style="margin-top: 1rem;">Informações sobre as ligas da Fonoaudiologia UnB, editais de extensão e oportunidades de estágios na região do DF.</p>
+        </div>
+
+        <!-- Aba Sobre -->
+        <div id="sobre" class="tab-content">
+            <h2>Sobre o CAFONO</h2>
+            <p style="margin-top: 1rem;">O Centro Acadêmico de Fonoaudiologia representa os discentes do curso na Faculdade de Ceilândia (FCE/UnB), lutando por melhorias, integração e fortalecimento profissional.</p>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        function switchTab(tabId, event) {
+            event.preventDefault();
+            
+            // Remove active class from all tabs content
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all nav links
+            const navLinks = document.querySelectorAll('nav a');
+            navLinks.forEach(link => link.classList.remove('active'));
+
+            // Add active class to target tab
+            document.getElementById(tabId).classList.add('active');
+
+            // Add active class to clicked link
+            event.currentTarget.classList.add('active');
+        }
+    </script>
+</body>
+</html>
