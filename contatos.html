@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contatos - CAFONO UnB</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #FAF9F6;
+            color: #1A1A1A;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #0B2545;
+            color: #FFFFFF;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        nav a {
+            color: #FFFFFF;
+            text-decoration: none;
+            margin-left: 1.5rem;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        nav a:hover {
+            color: #C8352B;
+        }
+
+        main {
+            flex: 1;
+            max-width: 900px;
+            width: 100%;
+            margin: 2.5rem auto;
+            padding: 0 1rem;
+        }
+
+        .card {
+            background: #FFFFFF;
+            padding: 2.5rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(11, 37, 69, 0.05);
+            border: 1px solid rgba(85, 96, 110, 0.1);
+            margin-bottom: 2rem;
+        }
+
+        .card h2 {
+            color: #0B2545;
+            margin-bottom: 0.5rem;
+            font-size: 1.5rem;
+        }
+
+        .card p {
+            color: #55606E;
+            margin-bottom: 2rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .contact-item {
+            background: #FAF9F6;
+            border: 1px solid rgba(85, 96, 110, 0.15);
+            padding: 1.5rem;
+            border-radius: 6px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .contact-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(11, 37, 69, 0.08);
+            border-color: #1F7A72;
+        }
+
+        .contact-info h3 {
+            color: #0B2545;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .contact-info span {
+            font-size: 0.9rem;
+            color: #55606E;
+            word-break: break-all;
+            line-height: 1.4;
+        }
+
+        .btn-contact {
+            display: inline-block;
+            margin-top: 1.5rem;
+            background-color: #0B2545;
+            color: #FFFFFF;
+            padding: 0.6rem 1rem;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-contact:hover {
+            background-color: #071730;
+        }
+
+        .btn-whatsapp {
+            background-color: #1F7A72;
+        }
+
+        .btn-whatsapp:hover {
+            background-color: #175d57;
+        }
+
+        footer {
+            background-color: #071730;
+            color: #FFFFFF;
+            text-align: center;
+            padding: 1.2rem;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>CAFONO UnB</h1>
+        <nav>
+            <a href="membrosca.html">Área de Membros</a>
+            <a href="contatos.html" style="color: #C8352B; font-weight: 600;">Contatos</a>
+        </nav>
+    </header>
+
+    <main>
+        <div class="card">
+            <h2>Canais de Atendimento e Comunicação</h2>
+            <p>Precisa falar com a gente, tirar dúvidas acadêmicas ou ficar por dentro dos avisos oficiais do curso? Utilize os canais oficiais abaixo:</p>
+
+            <div class="contact-grid">
+                
+                <!-- Grupo do WhatsApp -->
+                <div class="contact-item">
+                    <div class="contact-info">
+                        <h3>Informativos FONO</h3>
+                        <p>Grupo oficial no WhatsApp para avisos gerais e informações do curso.</p>
+                    </div>
+                    <a href="COLE_O_LINK_DO_GRUPO_AQUI" target="_blank" class="btn-contact btn-whatsapp">Acessar Grupo</a>
+                </div>
+
+                <!-- Secretaria de Graduação -->
+                <div class="contact-item">
+                    <div class="contact-info">
+                        <h3>Secretaria de Graduação</h3>
+                        <span>Dúvidas sobre matrícula, trancamento, colegiado e processos acadêmicos.</span>
+                        <br><br>
+                        <span style="font-weight: 600; color: #1A1A1A;">email@unb.br</span>
+                    </div>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=email@unb.br" target="_blank" class="btn-contact">Enviar E-mail</a>
+                </div>
+
+                <!-- E-mail do CAFONO -->
+                <div class="contact-item">
+                    <div class="contact-info">
+                        <h3>Diretoria CAFONO</h3>
+                        <span>Contato direto com a gestão do Centro Acadêmico para sugestões e parcerias.</span>
+                        <br><br>
+                        <span style="font-weight: 600; color: #1A1A1A;">cafono@unb.br</span>
+                    </div>
+                    <a href="https://mail.google.com/mail/?view=cm&fs=1&to=cafono@unb.br" target="_blank" class="btn-contact">Enviar E-mail</a>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
+    </footer>
+
+</body>
+</html>
