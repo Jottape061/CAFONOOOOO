@@ -3,8 +3,67 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ligas Acadêmicas - Fonoaudiologia</title>
+    <title>Ligas e Projetos Acadêmicos - Fonoaudiologia CAFONO</title>
+    <!-- Importação de fontes e estilos padronizados -->
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styleligas.css">
+    <style>
+        /* Estilos complementares para garantir o alinhamento perfeito dos cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .card {
+            background: #ffffff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            border-top: 4px solid #1d638c;
+            padding: 1.5rem;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            border-top-color: #e03636;
+        }
+
+        .card h3 {
+            font-size: 1.15rem;
+            color: #0b3954;
+            margin-bottom: 0.75rem;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: #e03636;
+            color: #ffffff;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            transition: background 0.3s ease;
+        }
+
+        .btn:hover {
+            background-color: #b52929;
+        }
+    </style>
 </head>
 <body>
 
@@ -15,65 +74,123 @@
             <ul>
                 <li><a href="index.html">Início</a></li>
                 <li><a href="sobre.html" target="_blank">Sobre o Curso</a></li>
-                <li><a href="ligas.html">Ligas</a></li>
+                <li><a href="ligas.html" class="active">Ligas</a></li>
+                <li><a href="produtos.html">Produtos</a></li>
+                <li><a href="materiais.html">Materiais</a></li>
             </ul>
         </nav>
     </header>
 
     <!-- Título Principal da Página -->
-    <section class="hero" style="padding: 60px 20px;">
-        <h1>Ligas Acadêmicas</h1>
+    <section class="hero" style="padding: 40px 20px; text-align: center;">
+        <h1>Ligas e Projetos Acadêmicos</h1>
         <p>Conecte-se com a extensão, a pesquisa e a prática aprofundada fora da sala de aula.</p>
     </section>
 
-    <!-- Lista de Ligas usando os Cards -->
-    <section class="info-section">
-        <h2>Ligas Ativas e Áreas de Estudo</h2>
+    <!-- Lista de Ligas e Projetos usando os Cards -->
+    <section class="info-section" style="max-width: 1200px; margin: 0 auto; padding: 0 20px 40px 20px;">
+        <h2>Iniciativas Ativas e Áreas de Estudo</h2>
         <div class="cards">
             
+            <!-- LAFONPED -->
             <div class="card">
                 <h3>Liga Acadêmica de Fonoaudiologia Pediátrica e Neonatal (LAFONPED)</h3>
-                <p> Promove estudos, eventos acadêmicos e discussões voltadas à atuação do fonoaudiólogo no desenvolvimento infantil, amamentação, motricidade orofacial em bebês, apraxia de fala infantil e cuidados neonatais</p>
-                <br>
-                <a href="#" class="btn" style="padding: 6px 12px; font-size: 0.9rem;">Formulário de Inscrição</a>
+                <p>Promove estudos, eventos acadêmicos e discussões voltadas à atuação do fonoaudiólogo no desenvolvimento infantil, amamentação, motricidade orofacial em bebês, apraxia de fala infantil e cuidados neonatais.</p>
+                <a href="https://www.instagram.com/laea.unb/" class="btn" target="_blank">Saiba Mais</a>
             </div>
 
+            <!-- LAFOUnB / LAFO -->
             <div class="card">
                 <h3>Liga Acadêmica de Fononcologia (LAFOUnB)</h3>
-                <p>A liga atua com foco na saúde, tecnologia e educação, integrando áreas como a fonoaudiologia e os cuidados com pacientes oncológicos (especialmente relacionados ao câncer de cabeça e pescoço). Um de seus projetos de destaque na comunidade e ações de cidadania é o "Sem Fumaça, Mais Vida"</p>
-                <br>
-                <a href="#" class="btn" style="padding: 6px 12px; font-size: 0.9rem;">Formulário de Inscrição</a>
+                <p>Atua com foco na saúde, tecnologia e educação, integrando áreas como a fonoaudiologia e os cuidados com pacientes oncológicos (câncer de cabeça e pescoço). Destaque para o projeto "Sem Fumaça, Mais Vida".</p>
+                <a href="https://www.instagram.com/lafounb/" class="btn" target="_blank">Saiba Mais</a>
             </div>
 
+            <!-- LIACUP -->
             <div class="card">
                 <h3>Liga Acadêmica Multiprofissional de Cuidados Paliativos (LIACUP)</h3>
-                <p> Promover a integração entre ensino, pesquisa e extensão em cuidados paliativos, alinhada às demandas da comunidade e do Sistema Único de Saúde (SUS)</p>
-                <br>
-                <a href="#" class="btn" style="padding: 6px 12px; font-size: 0.9rem;">Formulário de Inscrição</a>
+                <p>Promove a integração entre ensino, pesquisa e extensão em cuidados paliativos, alinhada às demandas da comunidade e do Sistema Único de Saúde (SUS).</p>
+                <a href="https://www.instagram.com/liacup.unb/" class="btn" target="_blank">Saiba Mais</a>
             </div>
 
+            <!-- LAFOV -->
             <div class="card">
                 <h3>Liga Acadêmica de Voz (LAFOV)</h3>
-                <p>Atividades de ensino, pesquisa e extensão voltadas para a área da voz na fonoaudiologia.</p>
-                <br>
-                <a href="https://docs.google.com/forms/d/e/1FAIpQLScZ7l2jveogoQCDylNti0Mbl2naz7_M5yD8LG7Lt6UeU7e7Pw/viewform" class="btn" style="padding: 6px 12px; font-size: 0.9rem;">Formulário de Inscrição</a>
+                <p>Atividades de ensino, pesquisa e extensão voltadas para a área da voz na fonoaudiologia, envolvendo estética vocal, clínica e aperfeiçoamento profissional.</p>
+                <a href="https://www.instagram.com/liga.lafov/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- LAEA -->
+            <div class="card">
+                <h3>Liga Acadêmica de Equilíbrio e Audição (LAEA)</h3>
+                <p>Formada por estudantes que unem ensino, pesquisa, extensão e gestão acadêmica com ações de impacto social (parcerias com o DETRAN e escolas), promovendo a saúde auditiva e do equilíbrio.</p>
+                <a href="https://www.instagram.com/laea.unb/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- LAFAPS -->
+            <div class="card">
+                <h3>Liga Acadêmica de Fonoaudiologia na Atenção Primária à Saúde (LAFAPS)</h3>
+                <p>Aprofunda o conhecimento sobre o papel da fonoaudiologia nos diferentes níveis de cuidado, com ênfase na prevenção, promoção e aproximação com a realidade da atenção básica do SUS.</p>
+                <a href="https://www.instagram.com/lafapsunb/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- Programa Audiologia na Escola -->
+            <div class="card">
+                <h3>Programa Audiologia na Escola</h3>
+                <p>Iniciativa de extensão voltada à prevenção, estímulo auditivo e conscientização em crianças, adolescentes e grupos especiais (incluindo triagens e oficinas educativas sobre exposição a ruídos).</p>
+                <a href="https://www.instagram.com/audiologianaescola/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- Projeto fonoidoso (C.C.A.A. idoso) -->
+            <div class="card">
+                <h3>Projeto Fonoidoso (C.C.A.A. Idoso)</h3>
+                <p>Cuidados com a comunicação, audição e alimentação dos idosos, promovendo a saúde fonoaudiológica da população idosa através de triagens, oficinas e capacitação de cuidadores.</p>
+                <a href="https://www.instagram.com/fonoidosounb/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- Projeto Fono nas Casas -->
+            <div class="card">
+                <h3>Projeto Fono nas Casas</h3>
+                <p>Atua em casas-lares oferecendo atendimento individualizado a crianças com foco em audição e linguagem, além de palestras mensais para gestantes sobre o desenvolvimento comunicativo.</p>
+                <a href="https://www.instagram.com/fononascasas/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- Projeto Libras -->
+            <div class="card">
+                <h3>Projeto Libras</h3>
+                <p>Promove a acessibilidade comunicativa e inclusão da comunidade surda no meio acadêmico e social por meio de cursos de Libras, materiais didáticos e tecnologias assistivas.</p>
+                <a href="https://www.instagram.com/projetolibrasfcts/" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- Projeto de extensão respiração oral -->
+            <div class="card">
+                <h3>Projeto de Extensão em Respiração Oral</h3>
+                <p>Com mais de cinco anos de atuação na Faculdade de Ceilândia, conscientiza sobre as causas, consequências, prevenção e tratamento da respiração oral através de ações educativas.</p>
+                <a href="#" class="btn" target="_blank">Saiba Mais</a>
+            </div>
+
+            <!-- PEENSO -->
+            <div class="card">
+                <h3>Projeto de Pesquisa, Estudo e Extensão em Neuropsicologia (PEENSO)</h3>
+                <p>Neurocomunicação da UnB focada em saúde mental, comunicação e cognição, integrando neurociências, psicologia e fonoaudiologia através de grupos de estudo, workshops e pesquisas científicas.</p>
+                <a href="https://www.instagram.com/respiracaooralunb/" class="btn" target="_blank">Saiba Mais</a>
             </div>
 
         </div>
     </section>
 
     <!-- Seção de Orientações -->
-    <section class="history-section" style="margin-bottom: 50px;">
+    <section class="history-section" style="max-width: 1200px; margin: 0 auto 50px auto; padding: 0 20px;">
         <h2>Como funcionam os Processos Seletivos?</h2>
         <div class="history-content">
-            <p>Geralmente, as Ligas Acadêmicas abrem processos seletivos no início de cada semestre letivo. As seleções costumam envolver análise de currículo, carta de motivação e/ou provas teóricas baseadas em artigos científicos da área.</p>
+            <p>Geralmente, as Ligas Acadêmicas e Projetos abrem processos seletivos no início de cada semestre letivo. As seleções costumam envolver análise de currículo, carta de motivação e/ou provas teóricas baseadas em artigos científicos da área.</p>
             <p>Fique de olho nas redes sociais oficiais e nos canais de comunicação para não perder os prazos de inscrição e os editais vigentes!</p>
         </div>
     </section>
 
     <!-- Rodapé -->
     <footer>
-        <p>&copy; 2026 Portal da Fonoaudiologia. Desenvolvido para a comunidade acadêmica.</p>
+        <p>&copy; 2026 CAFONO UnB - Todos os direitos reservados.</p>
     </footer>
 
 </body>
